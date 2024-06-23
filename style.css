@@ -46,18 +46,42 @@ button {
     height: 3rem;
     width: 4rem;
     border-radius: 1rem;
-    background: #FFBF00;
-    border: 3px solid #fda32d;
     color: #FFFEFA;
     font-size: xx-large;
     font-weight: 600;
     text-align: center;
-    box-shadow: 0.17rem 0.17rem #FFD801;
     transition: all 0.2s ease;
-    margin-bottom: 1.8rem;
-    
+    margin-bottom: 1.8rem;    
 }
-button:active{
+.numbers {
+    background: #FFBF00;
+    border: 3px solid #fda32d;
+    box-shadow: 0.17rem 0.17rem #FFD801;
+}
+.numbers:active{
     box-shadow: 0.08rem 0.08rem #FFD801;
 }
-
+.operators {
+    background: #1589FF;
+    border: 3px solid #0059FF;
+    box-shadow: 0.17rem 0.17rem #00BFFF;
+}
+.operators:active{
+    box-shadow: 0.08rem 0.08rem #00BFFF;
+}
+.equal {
+    background: #FF4500;
+    border: 3px solid #E42217;
+    box-shadow: 0.17rem 0.17rem #fd664b;
+}
+.equal:active{
+    box-shadow: 0.08rem 0.08rem #fd664b;
+}
+.clear {
+    background: #08A04B;
+    border: 3px solid #27742C;
+    box-shadow: 0.17rem 0.17rem #52D017;
+}
+.clear:active{
+    box-shadow: 0.08rem 0.08rem #52D017;
+}
