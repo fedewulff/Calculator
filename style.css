@@ -33,18 +33,18 @@ input {
     border-radius: 0rem 0rem 1rem 1rem;
 }
 
-.row{
+.toprow, .row{
     display: flex;
-    justify-content:space-between;
+    justify-content:center;
+    gap: 6%;
 }
+
 
 .buttons {
     margin-top: 2rem;
     margin-bottom: -1.8rem;
 }
 button {
-    height: 3rem;
-    width: 4rem;
     border-radius: 1rem;
     color: #FFFEFA;
     font-size: xx-large;
@@ -52,6 +52,15 @@ button {
     text-align: center;
     transition: all 0.2s ease;
     margin-bottom: 1.8rem;    
+}
+.row button {
+    height: 3rem;
+    width: 27.333%;
+}
+
+.toprow button{
+    height: 3rem;
+    width: 47%;
 }
 .numbers {
     background: #FFBF00;

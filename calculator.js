@@ -1,30 +1,34 @@
 
 const numbers = document.querySelectorAll(`.numbers`);
-const operators = document.querySelectorAll(`.operators`)
-const input1 = document.querySelector(`.input1`)
-const input2 = document.querySelector(`.input2`)
-const equal = document.querySelector(`.equal`)
-const clear = document.querySelector(`.clear`)
+const operators = document.querySelectorAll(`.operators`);
+const input1 = document.querySelector(`.input1`);
+const input2 = document.querySelector(`.input2`);
+const equal = document.querySelector(`.equal`);
+const clear = document.querySelector(`.clear`);
+const dot = document.querySelector(`#dot`);
+const del = document.querySelector(`#delete`)
 
 input1.value = ``
 input2.value = 0
 let buttonClicks = 0;
-let text =``
-let calculation = ``
-let pepito = ``
-let jeremias = ``
-let result = ``
-let number1 = 0
 let operator = [`+`, `-`, `*`, `/`]
-let number2 = 0
 let button = ``
 let toto = ``
 let pipi = ``
+let newstring = ``
+
+
+
+
+
+
 
 operators.forEach((operatorButton) => {
     operatorButton.addEventListener(`click`, function() {
         
         buttonClicks++;
+
+        dot.disabled = false;
 
         if(buttonClicks == 1){
         input1.value = `${input2.value} ${operatorButton.textContent} `;
@@ -48,8 +52,14 @@ operators.forEach((operatorButton) => {
 
 numbers.forEach((numberButton) => {
     numberButton.addEventListener(`click`, function() {
+        
         if (input2.value == 0 || input2.value == `Undefined`) {input2.value= ``}
-        input2.value += numberButton.textContent
+        
+        input2.value += numberButton.textContent;
+        console.log((input2.value))
+        if(Number.isInteger(Number(input2.value)) == false) {dot.disabled = true; console.log(`titi`)}   
+        if(Number.isInteger(Number(input2.value)) == true) {dot.disabled = false; console.log(`popo`)}  
+        
     })
 });
 
@@ -61,26 +71,31 @@ equal.addEventListener(`click`, function(){
 })
 
 clear.addEventListener(`click`, function(){
+    dot.disabled = false;
     buttonClicks = 0
     input1.value = ``
     input2.value = 0
 })
 
+del.addEventListener(`click`, function(){
+    let newstring = input2.value;
+    input2.value = newstring.slice(0,-1);
+})
 
 function sum(a,b){
-    return a + b
+    return (a + b)
 }
 
 function substract(a,b){
-    return a - b
+    return (a - b)
 }
 
 function multiply(a,b){
-    return a * b
+    return (a * b)
 }
 
 function divide(a,b){
-    return a / b
+    return (a / b)
 }
 
 
@@ -109,19 +124,21 @@ function operate(a,operator,b){
 function equalize(a,operator,b){
     
     if(operator === `+`){
-        input2.value = `${sum(a,b)}`
+        input2.value = `${Number(sum(a,b).toFixed(4))}`
+     
         input1.value = ``
         
-        console.log(input2.value)
+       
     }
     if(operator === `-`){
-        input2.value = `${substract(a,b)}`
+        input2.value = `${Number(substract(a,b).toFixed(4))}`
+        
         input1.value = ``
         
-        console.log(input2.value)
     }
     if(operator === `*`){
-        input2.value = `${multiply(a,b)}`
+        input2.value = `${Number(multiply(a,b).toFixed(4))}`
+        
         input1.value = ``
     }
     if(operator === `/` && b === 0){
@@ -129,8 +146,8 @@ function equalize(a,operator,b){
         input2.value = `Undefined`
     }
     if(operator === `/` && b !== 0){
-        input2.value = `${divide(a,b)}`
+        input2.value = `${Number(divide(a,b).toFixed(4))}`
+        
         input1.value = ``
     }
 }
-//console.log(operate(Number(`44`),`+`, Number(`88`)))
